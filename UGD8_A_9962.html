@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Unguided 8</title>
+        <script src="vue.js"></script>
+    </head>
+
+    <body> 
+        <h1>Tebak Angka</h1> 
+          
+        <p>Tebak Angka dari 1 sampai 10</p> 
+          
+        <div class="form"> 
+            <label for="guessField">Isi Tebakan: </label> 
+            <input type = "text" id = "guessField" class = "guessField"> 
+            <input type = "submit" value = "Submit guess" 
+                   class = "guessSubmit" id = "submitguess">
+                   <br><br>
+                   <input type = "button" id = "tebakLagi" value = "Tebak Lagi">
+                   <br><br>
+            <input type = "button" id = "mainLagi" value = "Main Ulang">
+        </div>
+
+        <script type = "text/javascript"> 
+          
+            // random number generator
+            var y = Math.floor(Math.random() * 10 + 1);
+            console.log(y);
+              
+            // ngitung attemp
+            var guess = 0;
+            
+            document.getElementById("mainLagi").onclick = function(){
+                document.getElementById("guessField").disabled = false;
+                document.getElementById("submitguess").disabled = false;
+                guess = 0;
+                y = Math.floor(Math.random() * 10 + 1);
+                console.log(y);
+            }
+
+            document.getElementById("tebakLagi").onclick = function(){
+                document.getElementById("guessField").disabled = false;
+                document.getElementById("submitguess").disabled = false;
+            }
+              
+            document.getElementById("submitguess").onclick = function(){ 
+              
+           // number guessed by user      
+           var x = document.getElementById("guessField").value; 
+          
+
+           if(x == y) 
+           {    
+               guess++;
+               alert("SELAMAT TEBAKAN ANDA BENAR DAN MENJAWAB DENGAN "
+                       + guess + " TEBAKAN ");
+                guess = 0;
+                	
+                //Disabling a text input field with regular JavaScript.
+                document.getElementById("guessField").disabled = true;
+                document.getElementById("submitguess").disabled = true;
+                document.getElementById("tebakLagi").disabled = true;
+           } 
+           else
+           { 
+               guess++; 
+               alert("TEBAKAN SALAH!")
+               document.getElementById("guessField").disabled = true;
+                 document.getElementById("submitguess").disabled = true;
+               if(guess == 3)
+               {
+                   alert("ANDA KALAH ! SILAHKAN MAIN ULANG")
+                   guess = 0;
+                   //Disabling a text input field with regular JavaScript.
+                 document.getElementById("guessField").disabled = true;
+                 document.getElementById("submitguess").disabled = true;
+               }
+           }
+        }
+        
+        </script>
+
+        <div class="footer">
+            <strong><p>Raymond Ibrahim | 180709962 | PAW A</p></strong>
+        </div>
+  
+
+        </body>
+
+        <style>
+            .footer {
+               position: fixed;
+               left: 0;
+               bottom: 0;
+               width: 100%;
+               background-color: red;
+               color: white;
+               text-align: center;
+            }
+            </style>
+
+        </html>                     
